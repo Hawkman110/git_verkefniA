@@ -14,3 +14,8 @@ fimmta verkefnið mitt
 	git diff: Sýnir þer munin á skýrsluni þinni fyrir og eftir breytingar.
 	git checkout: Endurheimtar fyrverandi hinnihald skránna þinnar. 
 
+3. Hver er munurinn á eftirfarandi git skipunum:
+	a) git diff: þessi skupun leifir þér að sjá allan mismun verkefnsins í gegnum tíðina.
+	b) git diff --staged: þessi skupun leifir þér að sjá allan mismun staged sránna í gegnum tíðina.
+	c) git diff commit1 commit2: þessi skipun leifir manni að sjámismunin á milli valdna commits.
+						    
