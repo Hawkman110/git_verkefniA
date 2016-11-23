@@ -39,3 +39,6 @@ fimmta verkefnið mitt
 	því, Staging area er þar sem þú getur testað allar breytingar verkefnsins 
     áður en þú commitar því og Repository er allt verkefnið þitt á githup þar sem allt er geimt.
  
+8.	Hvenær er sniðugt að nota greinar (branches)?: 
+    
+    þegar maður er að vinna með mörgum á sama verkefninu.7
