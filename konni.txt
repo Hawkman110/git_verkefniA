@@ -1,1 +1,16 @@
 fimmta verkefnið mitt
+
+1. Hvað gera eftirfarandi Linux skipanir?
+	cd: breytit um skrá.
+	cd ~: Tekur þig beint í heima skránna.
+	ls: sínir þér hinnihaldið í skránna sem þú ert í.
+	pwd: Skrifar út í hvaða ská þú ert í.
+	mkdir: Býr til skrá ef hún er eki til.
+
+2. Hvað gera eftirfarandi git skipanir og hvers vegna eru þær gagnlegar?
+	git clone: Clonar geymslu í nýa skrá.
+	git log: Sýnir allar breytingar í geymslu í öfugarri röð.
+	git status: Sýnir þér hvaða skrár git er að tracka og hvaða skrá hann er ekki að tracka.
+	git diff: Sýnir þer munin á skýrsluni þinni fyrir og eftir breytingar.
+	git checkout: Endurheimtar fyrverandi hinnihald skránna þinnar. 
+
