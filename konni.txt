@@ -25,4 +25,7 @@ fimmta verkefnið mitt
     þínu þannig þú getur alltaf skoðað hvernig verkefnið þitt var áður og ef þú þarft þá getur
 	þú alltaf farið til baka og haldið áfram með gamla gerð af verkefninu þínu.
 
+5.	Hverjir eru helstu kostir við að nota GIT?: 
+
+    Það geymir verkefnið þitt á netinu og leifir mörgum að vinna saman á því í einu.
 
