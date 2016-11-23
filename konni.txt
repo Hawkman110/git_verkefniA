@@ -29,3 +29,7 @@ fimmta verkefnið mitt
 
     Það geymir verkefnið þitt á netinu og leifir mörgum að vinna saman á því í einu.
 
+6.	Hversu oft telur þú að eigi að gera commit í verkefni, rökstuddu?: 
+    
+    hversu oft maður commitar fer eftir því hversu margar villur eru í verkefninu.
+
