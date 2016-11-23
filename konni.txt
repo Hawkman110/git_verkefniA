@@ -42,3 +42,5 @@ fimmta verkefnið mitt
 8.	Hvenær er sniðugt að nota greinar (branches)?: 
     
     þegar maður er að vinna með mörgum á sama verkefninu.7
+
+    Haukur
