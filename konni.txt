@@ -19,3 +19,10 @@ fimmta verkefnið mitt
 	b) git diff --staged: þessi skupun leifir þér að sjá allan mismun staged sránna í gegnum tíðina.
 	c) git diff commit1 commit2: þessi skipun leifir manni að sjámismunin á milli valdna commits.
 						    
+4. 	Hvað er útgáfustýring (e.version control)?: 
+
+    Útgáfustýring geymir allar gerðir af verkefninu 
+    þínu þannig þú getur alltaf skoðað hvernig verkefnið þitt var áður og ef þú þarft þá getur
+	þú alltaf farið til baka og haldið áfram með gamla gerð af verkefninu þínu.
+
+
