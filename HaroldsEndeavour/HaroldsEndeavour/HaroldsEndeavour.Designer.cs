@@ -45,6 +45,12 @@
             this.btnSouth = new System.Windows.Forms.Button();
             this.btnEast = new System.Windows.Forms.Button();
             this.btnWest = new System.Windows.Forms.Button();
+            this.rtbLocation = new System.Windows.Forms.RichTextBox();
+            this.rtbMessagess = new System.Windows.Forms.RichTextBox();
+            this.dgvInventory = new System.Windows.Forms.DataGridView();
+            this.dgvQuests = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvQuests)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -169,7 +175,7 @@
             // 
             // btnSouth
             // 
-            this.btnSouth.Location = new System.Drawing.Point(113, 226);
+            this.btnSouth.Location = new System.Drawing.Point(493, 487);
             this.btnSouth.Name = "btnSouth";
             this.btnSouth.Size = new System.Drawing.Size(75, 23);
             this.btnSouth.TabIndex = 14;
@@ -178,7 +184,7 @@
             // 
             // btnEast
             // 
-            this.btnEast.Location = new System.Drawing.Point(113, 256);
+            this.btnEast.Location = new System.Drawing.Point(573, 457);
             this.btnEast.Name = "btnEast";
             this.btnEast.Size = new System.Drawing.Size(75, 23);
             this.btnEast.TabIndex = 15;
@@ -187,18 +193,67 @@
             // 
             // btnWest
             // 
-            this.btnWest.Location = new System.Drawing.Point(113, 286);
+            this.btnWest.Location = new System.Drawing.Point(412, 457);
             this.btnWest.Name = "btnWest";
             this.btnWest.Size = new System.Drawing.Size(75, 23);
             this.btnWest.TabIndex = 16;
             this.btnWest.Text = "West";
             this.btnWest.UseVisualStyleBackColor = true;
             // 
+            // rtbLocation
+            // 
+            this.rtbLocation.Location = new System.Drawing.Point(347, 19);
+            this.rtbLocation.Name = "rtbLocation";
+            this.rtbLocation.ReadOnly = true;
+            this.rtbLocation.Size = new System.Drawing.Size(360, 105);
+            this.rtbLocation.TabIndex = 17;
+            this.rtbLocation.Text = "";
+            // 
+            // rtbMessagess
+            // 
+            this.rtbMessagess.Location = new System.Drawing.Point(347, 130);
+            this.rtbMessagess.Name = "rtbMessagess";
+            this.rtbMessagess.ReadOnly = true;
+            this.rtbMessagess.Size = new System.Drawing.Size(360, 286);
+            this.rtbMessagess.TabIndex = 18;
+            this.rtbMessagess.Text = "";
+            // 
+            // dgvInventory
+            // 
+            this.dgvInventory.AllowUserToAddRows = false;
+            this.dgvInventory.AllowUserToDeleteRows = false;
+            this.dgvInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInventory.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvInventory.Location = new System.Drawing.Point(16, 130);
+            this.dgvInventory.MultiSelect = false;
+            this.dgvInventory.Name = "dgvInventory";
+            this.dgvInventory.ReadOnly = true;
+            this.dgvInventory.Size = new System.Drawing.Size(312, 309);
+            this.dgvInventory.TabIndex = 19;
+            // 
+            // dgvQuests
+            // 
+            this.dgvQuests.AllowUserToAddRows = false;
+            this.dgvQuests.AllowUserToDeleteRows = false;
+            this.dgvQuests.AllowUserToResizeRows = false;
+            this.dgvQuests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvQuests.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvQuests.Location = new System.Drawing.Point(16, 446);
+            this.dgvQuests.MultiSelect = false;
+            this.dgvQuests.Name = "dgvQuests";
+            this.dgvQuests.ReadOnly = true;
+            this.dgvQuests.Size = new System.Drawing.Size(312, 189);
+            this.dgvQuests.TabIndex = 20;
+            // 
             // HaroldsEndeavour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 651);
+            this.Controls.Add(this.dgvQuests);
+            this.Controls.Add(this.dgvInventory);
+            this.Controls.Add(this.rtbMessagess);
+            this.Controls.Add(this.rtbLocation);
             this.Controls.Add(this.btnWest);
             this.Controls.Add(this.btnEast);
             this.Controls.Add(this.btnSouth);
@@ -218,6 +273,8 @@
             this.Controls.Add(this.label1);
             this.Name = "HaroldsEndeavour";
             this.Text = "Harold\'s Endeavour";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvQuests)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,6 +299,10 @@
         private System.Windows.Forms.Button btnSouth;
         private System.Windows.Forms.Button btnEast;
         private System.Windows.Forms.Button btnWest;
+        private System.Windows.Forms.RichTextBox rtbLocation;
+        private System.Windows.Forms.RichTextBox rtbMessagess;
+        private System.Windows.Forms.DataGridView dgvInventory;
+        private System.Windows.Forms.DataGridView dgvQuests;
     }
 }
 
