@@ -42,3 +42,14 @@ C:\Users\Notandi\Desktop\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\Haro
 C:\Users\Notandi\Desktop\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\bin\Debug\HaroldsEndeavour.pdb
 C:\Users\Notandi\Desktop\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\bin\Debug\Engine.dll
 C:\Users\Notandi\Desktop\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\bin\Debug\Engine.pdb
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\bin\Debug\HaroldsEndeavour.exe.config
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\obj\Debug\HaroldsEndeavour.exe
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\obj\Debug\HaroldsEndeavour.pdb
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\bin\Debug\HaroldsEndeavour.exe
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\bin\Debug\HaroldsEndeavour.pdb
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\bin\Debug\Engine.dll
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\bin\Debug\Engine.pdb
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\obj\Debug\HaroldsEndeavour.csprojResolveAssemblyReference.cache
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\obj\Debug\HaroldsEndeavour.HaroldsEndeavour.resources
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\obj\Debug\SuperAdventure.Properties.Resources.resources
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\obj\Debug\HaroldsEndeavour.csproj.GenerateResource.Cache

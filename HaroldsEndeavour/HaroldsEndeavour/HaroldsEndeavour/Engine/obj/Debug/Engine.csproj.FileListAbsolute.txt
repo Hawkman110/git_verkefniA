@@ -18,3 +18,8 @@ C:\Users\Notandi\Desktop\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\Engi
 C:\Users\Notandi\Desktop\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\Engine\obj\Debug\Engine.pdb
 C:\Users\Notandi\Desktop\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\Engine\bin\Debug\Engine.dll
 C:\Users\Notandi\Desktop\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\Engine\bin\Debug\Engine.pdb
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\Engine\bin\Debug\Engine.dll
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\Engine\bin\Debug\Engine.pdb
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\Engine\obj\Debug\Engine.csprojResolveAssemblyReference.cache
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\Engine\obj\Debug\Engine.dll
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\Engine\obj\Debug\Engine.pdb
