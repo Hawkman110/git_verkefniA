@@ -133,7 +133,7 @@
             // cboWeapons
             // 
             this.cboWeapons.FormattingEnabled = true;
-            this.cboWeapons.Location = new System.Drawing.Point(369, 559);
+            this.cboWeapons.Location = new System.Drawing.Point(480, 559);
             this.cboWeapons.Name = "cboWeapons";
             this.cboWeapons.Size = new System.Drawing.Size(121, 21);
             this.cboWeapons.TabIndex = 9;
@@ -141,7 +141,7 @@
             // cboPotions
             // 
             this.cboPotions.FormattingEnabled = true;
-            this.cboPotions.Location = new System.Drawing.Point(369, 593);
+            this.cboPotions.Location = new System.Drawing.Point(480, 593);
             this.cboPotions.Name = "cboPotions";
             this.cboPotions.Size = new System.Drawing.Size(121, 21);
             this.cboPotions.TabIndex = 10;
@@ -152,7 +152,7 @@
             this.btnUseWeapon.Name = "btnUseWeapon";
             this.btnUseWeapon.Size = new System.Drawing.Size(75, 23);
             this.btnUseWeapon.TabIndex = 11;
-            this.btnUseWeapon.Text = "Use";
+            this.btnUseWeapon.Text = "Attack";
             this.btnUseWeapon.UseVisualStyleBackColor = true;
             this.btnUseWeapon.Click += new System.EventHandler(this.btnUseWeapon_Click);
             // 
@@ -162,7 +162,7 @@
             this.btnUsePotion.Name = "btnUsePotion";
             this.btnUsePotion.Size = new System.Drawing.Size(75, 23);
             this.btnUsePotion.TabIndex = 12;
-            this.btnUsePotion.Text = "Use";
+            this.btnUsePotion.Text = "Drink";
             this.btnUsePotion.UseVisualStyleBackColor = true;
             // 
             // btnNorth
@@ -213,6 +213,7 @@
             this.rtbMessages.Size = new System.Drawing.Size(360, 286);
             this.rtbMessages.TabIndex = 17;
             this.rtbMessages.Text = "";
+            this.rtbMessages.TextChanged += new System.EventHandler(this.rtbMessages_TextChanged);
             // 
             // rtbLocation
             // 
@@ -241,6 +242,8 @@
             // 
             // dgvInventory
             // 
+            this.dgvInventory.AccessibleDescription = "";
+            this.dgvInventory.AccessibleName = "";
             this.dgvInventory.AllowUserToAddRows = false;
             this.dgvInventory.AllowUserToDeleteRows = false;
             this.dgvInventory.AllowUserToResizeRows = false;
