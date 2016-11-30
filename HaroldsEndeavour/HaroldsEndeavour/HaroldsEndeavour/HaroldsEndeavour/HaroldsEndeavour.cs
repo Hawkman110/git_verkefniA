@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Engine;
+using SuperAdventure;
 
 namespace HaroldsEndeavour
 {
@@ -207,7 +208,7 @@ namespace HaroldsEndeavour
             dgvInventory.RowHeadersVisible = false;
 
             dgvInventory.ColumnCount = 2;
-            dgvInventory.Columns[0].Name = "Name";
+            dgvInventory.Columns[0].Name = "Inventory";
             dgvInventory.Columns[0].Width = 197;
             dgvInventory.Columns[1].Name = "Quantity";
 
@@ -227,7 +228,7 @@ namespace HaroldsEndeavour
             dgvQuests.RowHeadersVisible = false;
 
             dgvQuests.ColumnCount = 2;
-            dgvQuests.Columns[0].Name = "Name";
+            dgvQuests.Columns[0].Name = "Quests";
             dgvQuests.Columns[0].Width = 197;
             dgvQuests.Columns[1].Name = "Done?";
 
@@ -468,10 +469,18 @@ namespace HaroldsEndeavour
             UpdatePotionListInUI();
         }
 
+        private void btnTrade_Click(object sender, EventArgs e)
+        {
+            TradingScreen tradingScreen = new TradingScreen(_player);
+            tradingScreen.StartPosition = FormStartPosition.CenterParent;
+            tradingScreen.ShowDialog(this);
+        }
+
         private void rtbMessages_TextChanged(object sender, EventArgs e)
         {
             rtbMessages.SelectionStart = rtbMessages.Text.Length;
             rtbMessages.ScrollToCaret();
         }
+
     }
     }

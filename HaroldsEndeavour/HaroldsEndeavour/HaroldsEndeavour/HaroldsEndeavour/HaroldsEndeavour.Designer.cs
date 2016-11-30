@@ -49,6 +49,7 @@
             this.rtbLocation = new System.Windows.Forms.RichTextBox();
             this.dgvQuests = new System.Windows.Forms.DataGridView();
             this.dgvInventory = new System.Windows.Forms.DataGridView();
+            this.btnTrade = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).BeginInit();
             this.SuspendLayout();
@@ -204,6 +205,16 @@
             this.btnWest.Text = "West";
             this.btnWest.UseVisualStyleBackColor = true;
             this.btnWest.Click += new System.EventHandler(this.btnWest_Click);
+            //
+            // btnTrade
+            //
+            this.btnTrade.Location = new System.Drawing.Point(493, 620);
+            this.btnTrade.Name = "btnTrade";
+            this.btnTrade.Size = new System.Drawing.Size(75, 23);
+            this.btnTrade.TabIndex = 21;
+            this.btnTrade.Text = "Trade";
+            this.btnTrade.UseVisualStyleBackColor = true;
+            this.btnTrade.Click += new System.EventHandler(this.btnTrade_Click);
             // 
             // rtbMessages
             // 
@@ -284,6 +295,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnTrade);
             this.Name = "HaroldsEndeavour";
             this.Text = "Harold\'s Endeavour";
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuests)).EndInit();
@@ -316,6 +328,7 @@
         private System.Windows.Forms.RichTextBox rtbLocation;
         private System.Windows.Forms.DataGridView dgvQuests;
         private System.Windows.Forms.DataGridView dgvInventory;
+        private System.Windows.Forms.Button btnTrade;
     }
 }
 

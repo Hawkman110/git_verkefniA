@@ -13,6 +13,8 @@ namespace Engine
         public static readonly List<Quest> Quests = new List<Quest>();
         public static readonly List<Location> Locations = new List<Location>();
 
+        //Give all Items,Quests,Monsters and Locations an ID      
+        //Item ID's
         public const int ITEM_ID_RUSTY_SWORD = 1;
         public const int ITEM_ID_IRON_SWORD = 2;
         public const int ITEM_ID_RAT_TAIL = 3;
@@ -30,17 +32,20 @@ namespace Engine
         public const int ITEM_ID_GOBLIN_EYE = 15;
         public const int ITEM_ID_GOBLIN_SKIN = 16;
 
+        //Monster ID's
         public const int MONSTER_ID_RAT = 1;
         public const int MONSTER_ID_SNAKE = 2;
         public const int MONSTER_ID_GIANT_SPIDER = 3;
         public const int MONSTER_ID_SKELLATON = 4;
         public const int MONSTER_ID_GOBLIN = 5;
 
+        //Quest ID's
         public const int QUEST_ID_CLEAR_ALCHEMIST_GARDEN = 1;
         public const int QUEST_ID_CLEAR_FARMERS_FIELD = 2;
         public const int QUEST_ID_CLEAR_MYSTIC_TEMPLE = 3;
         public const int QUEST_ID_CLEAR_DARK_CAVE = 4;
 
+        //Location ID's
         public const int LOCATION_ID_HOME = 1;
         public const int LOCATION_ID_TOWN_SQUARE = 2;
         public const int LOCATION_ID_GUARD_POST = 3;
@@ -58,6 +63,8 @@ namespace Engine
         public const int LOCATION_ID_DARK_CAVE = 15;
         public const int LOCATION_ID_DARK_NARROW_ROAD = 16;
 
+        public const int UNSELLABLE_ITEM_PRICE = -1;
+
         static World()
         {
             PopulateItems();
@@ -66,26 +73,28 @@ namespace Engine
             PopulateLocations();
         }
 
+        //Creating the Items
         private static void PopulateItems()
         {
-            Items.Add(new Weapon(ITEM_ID_RUSTY_SWORD, "Rusty sword", "Rusty swords", 0, 5));
-            Items.Add(new Weapon(ITEM_ID_IRON_SWORD, "Iron sword", "Iron swords", 0, 10));
-            Items.Add(new Item(ITEM_ID_RAT_TAIL, "Rat tail", "Rat tails"));
-            Items.Add(new Item(ITEM_ID_PIECE_OF_FUR, "Piece of fur", "Pieces of fur"));
-            Items.Add(new Item(ITEM_ID_SNAKE_FANG, "Snake fang", "Snake fangs"));
-            Items.Add(new Item(ITEM_ID_SNAKESKIN, "Snakeskin", "Snakeskins"));
-            Items.Add(new Weapon(ITEM_ID_CLUB, "Club", "Clubs", 3, 10));
-            Items.Add(new HealingPotion(ITEM_ID_HEALING_POTION, "Healing potion", "Healing potions", 5));
-            Items.Add(new HealingPotion(ITEM_ID_EXPERIMENTAL_POTION, "Experimental potion", "Experimental potion's", 10));
-            Items.Add(new Item(ITEM_ID_SPIDER_FANG, "Spider fang", "Spider fangs"));
-            Items.Add(new Item(ITEM_ID_SPIDER_SILK, "Spider silk", "Spider silks"));
-            Items.Add(new Item(ITEM_ID_ADVENTURER_PASS, "Adventurer pass", "Adventurer passes"));
-            Items.Add(new Item(ITEM_ID_SKULL, "Skull", "Skulls"));
-            Items.Add(new Item(ITEM_ID_BONES, "Bone", "Bones"));
-            Items.Add(new Item(ITEM_ID_GOBLIN_EYE, "Goblin eye", "Goblin eyes"));
-            Items.Add(new Item(ITEM_ID_GOBLIN_SKIN, "Goblin Skin", "Goblin Skin's"));
+            Items.Add(new Weapon(ITEM_ID_RUSTY_SWORD, "Rusty sword", "Rusty swords", 0, 5, 5));
+            Items.Add(new Weapon(ITEM_ID_IRON_SWORD, "Iron sword", "Iron swords", 0, 10, 10));
+            Items.Add(new Item(ITEM_ID_RAT_TAIL, "Rat tail", "Rat tails", 1));
+            Items.Add(new Item(ITEM_ID_PIECE_OF_FUR, "Piece of fur", "Pieces of fur", 1));
+            Items.Add(new Item(ITEM_ID_SNAKE_FANG, "Snake fang", "Snake fangs", 1));
+            Items.Add(new Item(ITEM_ID_SNAKESKIN, "Snakeskin", "Snakeskins", 2));
+            Items.Add(new Weapon(ITEM_ID_CLUB, "Club", "Clubs", 3, 10, 8));
+            Items.Add(new HealingPotion(ITEM_ID_HEALING_POTION, "Healing potion", "Healing potions", 5, 3));
+            Items.Add(new HealingPotion(ITEM_ID_EXPERIMENTAL_POTION, "Experimental potion", "Experimental potion's", 10, 8));
+            Items.Add(new Item(ITEM_ID_SPIDER_FANG, "Spider fang", "Spider fangs", 2));
+            Items.Add(new Item(ITEM_ID_SPIDER_SILK, "Spider silk", "Spider silks", 5));
+            Items.Add(new Item(ITEM_ID_ADVENTURER_PASS, "Adventurer pass", "Adventurer passes", UNSELLABLE_ITEM_PRICE));
+            Items.Add(new Item(ITEM_ID_SKULL, "Skull", "Skulls", 5));
+            Items.Add(new Item(ITEM_ID_BONES, "Bone", "Bones", 1));
+            Items.Add(new Item(ITEM_ID_GOBLIN_EYE, "Goblin eye", "Goblin eyes", 5));
+            Items.Add(new Item(ITEM_ID_GOBLIN_SKIN, "Goblin Skin", "Goblin Skin's", 1));
         }
 
+        //Creating the monsters
         private static void PopulateMonsters()
         {
             Monster rat = new Monster(MONSTER_ID_RAT, "Rat", 5, 3, 10, 3, 3);
@@ -115,8 +124,10 @@ namespace Engine
             Monsters.Add(Goblin);
         }
 
+        //Creating the quests
         private static void PopulateQuests()
         {
+            //Clear the alchemsist garden
             Quest clearAlchemistGarden =
                 new Quest(
                     QUEST_ID_CLEAR_ALCHEMIST_GARDEN,
@@ -127,6 +138,7 @@ namespace Engine
 
             clearAlchemistGarden.RewardItem = ItemByID(ITEM_ID_HEALING_POTION);
 
+            // Clear the farmers field
             Quest clearFarmersField =
                 new Quest(
                     QUEST_ID_CLEAR_FARMERS_FIELD,
@@ -137,6 +149,7 @@ namespace Engine
 
             clearFarmersField.RewardItem = ItemByID(ITEM_ID_ADVENTURER_PASS);
 
+            //Clear the mystic temple
             Quest clearMysticTemple =
                 new Quest(
                     QUEST_ID_CLEAR_MYSTIC_TEMPLE,
@@ -147,6 +160,7 @@ namespace Engine
 
             clearMysticTemple.RewardItem = ItemByID(ITEM_ID_IRON_SWORD);
 
+            //Clear the dark cave
             Quest clearDarkCave =
                 new Quest(
                     QUEST_ID_CLEAR_DARK_CAVE,
@@ -164,12 +178,21 @@ namespace Engine
             Quests.Add(clearDarkCave);
         }
 
+
+
         private static void PopulateLocations()
         {
             // Create each location
             Location home = new Location(LOCATION_ID_HOME, "Home", "No place like home.");
 
+
             Location townSquare = new Location(LOCATION_ID_TOWN_SQUARE, "Town square", "You see a fountain and a rusty sword in the gudder.");
+
+            Vendor bobTheRatCatcher = new Vendor("Bob the Rat-Catcher");
+            bobTheRatCatcher.AddItemToInventory(ItemByID(ITEM_ID_PIECE_OF_FUR), 5);
+            bobTheRatCatcher.AddItemToInventory(ItemByID(ITEM_ID_RAT_TAIL), 3);
+
+            townSquare.VendorWorkingHere = bobTheRatCatcher;
 
             Location alchemistHut = new Location(LOCATION_ID_ALCHEMIST_HUT, "Alchemist's hut", "There are many strange plants on the shelves.");
             alchemistHut.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_ALCHEMIST_GARDEN);
@@ -206,7 +229,7 @@ namespace Engine
             Location darkCave = new Location(LOCATION_ID_DARK_CAVE, "Dark Cave", "Utter darkness and eckoing shriek's");
             darkCave.MonsterLivingHere = MonsterByID(MONSTER_ID_GOBLIN);
 
-            Location darkNarrowRoad = new Location(LOCATION_ID_DARK_NARROW_ROAD, "Dark Narrow Road", "A dark narrow road north covered in dead trees");
+            Location darkNarrowRoad = new Location(LOCATION_ID_DARK_NARROW_ROAD, "Dark Narrow Road", "A dark narrow road heading north covered in dead trees");
 
             // Link the locations together
             home.LocationToNorth = townSquare;
@@ -232,7 +255,7 @@ namespace Engine
             deadForest.LocationToEast = swamp;
             deadForest.LocationToNorth = darkNarrowRoad;
 
-            darkNarrowRoad.LocationToEast = deadForest;
+            darkNarrowRoad.LocationToSouth = deadForest;
 
             brokenBridge.LocationToEast = deadForest;
             brokenBridge.LocationToWest = mysticTempleYard;
@@ -245,7 +268,7 @@ namespace Engine
             swamp.LocationToWest = deadForest;
             swamp.LocationToNorth = darkCave;
 
-            darkCave.LocationToEast = swamp;
+            darkCave.LocationToSouth = swamp;
 
             guardPost.LocationToEast = bridge;
             guardPost.LocationToWest = townSquare;
