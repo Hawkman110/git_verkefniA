@@ -205,16 +205,6 @@
             this.btnWest.Text = "West";
             this.btnWest.UseVisualStyleBackColor = true;
             this.btnWest.Click += new System.EventHandler(this.btnWest_Click);
-            //
-            // btnTrade
-            //
-            this.btnTrade.Location = new System.Drawing.Point(493, 620);
-            this.btnTrade.Name = "btnTrade";
-            this.btnTrade.Size = new System.Drawing.Size(75, 23);
-            this.btnTrade.TabIndex = 21;
-            this.btnTrade.Text = "Trade";
-            this.btnTrade.UseVisualStyleBackColor = true;
-            this.btnTrade.Click += new System.EventHandler(this.btnTrade_Click);
             // 
             // rtbMessages
             // 
@@ -269,6 +259,16 @@
             this.dgvInventory.Size = new System.Drawing.Size(312, 309);
             this.dgvInventory.TabIndex = 20;
             // 
+            // btnTrade
+            // 
+            this.btnTrade.Location = new System.Drawing.Point(493, 620);
+            this.btnTrade.Name = "btnTrade";
+            this.btnTrade.Size = new System.Drawing.Size(75, 23);
+            this.btnTrade.TabIndex = 21;
+            this.btnTrade.Text = "Trade";
+            this.btnTrade.UseVisualStyleBackColor = true;
+            this.btnTrade.Click += new System.EventHandler(this.btnTrade_Click);
+            // 
             // HaroldsEndeavour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,6 +298,7 @@
             this.Controls.Add(this.btnTrade);
             this.Name = "HaroldsEndeavour";
             this.Text = "Harold\'s Endeavour";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HaroldsEndeavour_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).EndInit();
             this.ResumeLayout(false);

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 using Engine;
 using SuperAdventure;
@@ -17,19 +18,42 @@ namespace HaroldsEndeavour
     {
         private Player _player;
         private Monster _currentMonster;
+        private const string PLAYER_DATA_FILR_NAME = "Player.xml";
 
         public HaroldsEndeavour()
         {
             InitializeComponent();
 
-            _player = new Player(10, 10, 20, 0);
-            MoveTo(World.LocationByID(World.LOCATION_ID_HOME));
-            _player.Inventory.Add(new InventoryItem(World.ItemByID(World.ITEM_ID_RUSTY_SWORD), 1));
+            if (File.Exists(PLAYER_DATA_FILR_NAME))
+            {
+                _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILR_NAME));
+            }
+            else
+            {
+                _player = Player.CreateDefaultPlayer();
+            }
 
-            lbHitPoints.Text = _player.CurrentHitPoints.ToString();
-            lbGold.Text = _player.Gold.ToString();
-            lbXP.Text = _player.ExperiencePoints.ToString();
-            lbLevel.Text = _player.Level.ToString();
+            cboWeapons.DataSource = _player.Weapons;
+            cboWeapons.DisplayMember = "Name";
+            cboWeapons.ValueMember = "Id";
+
+            if (_player.CurrentWeapon != null)
+            {
+                cboWeapons.SelectedItem = _player.CurrentWeapon;
+            }
+
+            EventHandler cboWeapons_SelectedIndexChanged = null;
+            cboWeapons.SelectedIndexChanged += cboWeapons_SelectedIndexChanged;
+
+            cboPotions.DataSource = _player.Potions;
+            cboPotions.DisplayMember = "Name";
+            cboPotions.ValueMember = "Id";
+
+            _player.PropertyChanged += PlayerOnPropertyChanged;
+
+            MoveTo(_player.CurrentLocation);
+
+            UpdatePlayerStats();
         }
 
         private void btnNorth_Click(object sender, EventArgs e)
@@ -166,10 +190,10 @@ namespace HaroldsEndeavour
                     _currentMonster.LootTable.Add(lootItem);
                 }
 
-                cboWeapons.Visible = true;
-                cboPotions.Visible = true;
-                btnUseWeapon.Visible = true;
-                btnUsePotion.Visible = true;
+                cboWeapons.Visible = _player.Weapons.Any();
+                cboPotions.Visible = _player.Potions.Any();
+                btnUseWeapon.Visible = _player.Weapons.Any();
+                btnUsePotion.Visible = _player.Potions.Any();
             }
             else
             {
@@ -186,12 +210,31 @@ namespace HaroldsEndeavour
 
             // Refresh player's quest list
             UpdateQuestListInUI();
+        }
 
-            // Refresh player's weapons combobox
-            UpdateWeaponListInUI();
+        private void PlayerOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+        {
+            if (propertyChangedEventArgs.PropertyName == "Weapons")
+            {
+                cboWeapons.DataSource = _player.Weapons;
 
-            // Refresh player's potions combobox
-            UpdatePotionListInUI();
+                if (!_player.Weapons.Any())
+                {
+                    cboWeapons.Visible = false;
+                    btnUseWeapon.Visible = false;
+                }
+            }
+
+            if (propertyChangedEventArgs.PropertyName == "Potions")
+            {
+                cboPotions.DataSource = _player.Potions;
+
+                if (!_player.Potions.Any())
+                {
+                    cboPotions.Visible = false;
+                    btnUsePotion.Visible = false;
+                }
+            }
         }
 
         private void UpdatePlayerStats()
@@ -237,68 +280,6 @@ namespace HaroldsEndeavour
             foreach (PlayerQuest playerQuest in _player.Quests)
             {
                 dgvQuests.Rows.Add(new[] { playerQuest.Details.Name, playerQuest.IsCompleted.ToString() });
-            }
-        }
-
-        private void UpdateWeaponListInUI()
-        {
-            List<Weapon> weapons = new List<Weapon>();
-
-            foreach (InventoryItem inventoryItem in _player.Inventory)
-            {
-                if (inventoryItem.Details is Weapon)
-                {
-                    if (inventoryItem.Quantity > 0)
-                    {
-                        weapons.Add((Weapon)inventoryItem.Details);
-                    }
-                }
-            }
-
-            if (weapons.Count == 0)
-            {
-                // The player doesn't have any weapons, so hide the weapon combobox and "Use" button
-                cboWeapons.Visible = false;
-                btnUseWeapon.Visible = false;
-            }
-            else
-            {
-                cboWeapons.DataSource = weapons;
-                cboWeapons.DisplayMember = "Name";
-                cboWeapons.ValueMember = "ID";
-
-                cboWeapons.SelectedIndex = 0;
-            }
-        }
-
-        private void UpdatePotionListInUI()
-        {
-            List<HealingPotion> healingPotions = new List<HealingPotion>();
-
-            foreach (InventoryItem inventoryItem in _player.Inventory)
-            {
-                if (inventoryItem.Details is HealingPotion)
-                {
-                    if (inventoryItem.Quantity > 0)
-                    {
-                        healingPotions.Add((HealingPotion)inventoryItem.Details);
-                    }
-                }
-            }
-
-            if (healingPotions.Count == 0)
-            {
-                // The player doesn't have any potions, so hide the potion combobox and "Use" button
-                cboPotions.Visible = false;
-                btnUsePotion.Visible = false;
-            }
-            else
-            {
-                cboPotions.DataSource = healingPotions;
-                cboPotions.DisplayMember = "Name";
-                cboPotions.ValueMember = "ID";
-
-                cboPotions.SelectedIndex = 0;
             }
         }
 
@@ -378,8 +359,6 @@ namespace HaroldsEndeavour
                     lbLevel.Text = _player.Level.ToString();
 
                     UpdateInventoryListInUI();
-                    UpdateWeaponListInUI();
-                    UpdatePotionListInUI();
 
                     // Add a blank line to the messages box, just for appearance.
                     rtbMessages.Text += Environment.NewLine;
@@ -431,14 +410,7 @@ namespace HaroldsEndeavour
             }
 
             // Remove the potion from the player's inventory
-            foreach (InventoryItem ii in _player.Inventory)
-            {
-                if (ii.Details.ID == potion.ID)
-                {
-                    ii.Quantity--;
-                    break;
-                }
-            }
+            _player.RemoveItemFromInventory(potion, 1);
 
             // Display message
             rtbMessages.Text += "You drink a " + potion.Name + Environment.NewLine;
@@ -466,7 +438,6 @@ namespace HaroldsEndeavour
             // Refresh player data in UI
             lbHitPoints.Text = _player.CurrentHitPoints.ToString();
             UpdateInventoryListInUI();
-            UpdatePotionListInUI();
         }
 
         private void btnTrade_Click(object sender, EventArgs e)
@@ -492,5 +463,9 @@ namespace HaroldsEndeavour
             rtbMessages.ScrollToCaret();
         }
 
+        private void HaroldsEndeavour_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            File.WriteAllText(PLAYER_DATA_FILR_NAME, _player.ToXmlString());
+        }
     }
     }
