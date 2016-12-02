@@ -63,6 +63,7 @@ namespace Engine
         public const int LOCATION_ID_DARK_CAVE = 15;
         public const int LOCATION_ID_DARK_NARROW_ROAD = 16;
 
+        //Other
         public const int UNSELLABLE_ITEM_PRICE = -1;
 
         static World()
@@ -178,13 +179,10 @@ namespace Engine
             Quests.Add(clearDarkCave);
         }
 
-
-
         private static void PopulateLocations()
         {
             // Create each location
             Location home = new Location(LOCATION_ID_HOME, "Home", "No place like home.");
-
 
             Location townSquare = new Location(LOCATION_ID_TOWN_SQUARE, "Town square", "You see a fountain and a rusty sword in the gudder.");
 

@@ -51,9 +51,9 @@
             this.lbVendorInventory.AutoSize = true;
             this.lbVendorInventory.Location = new System.Drawing.Point(349, 13);
             this.lbVendorInventory.Name = "lbVendorInventory";
-            this.lbVendorInventory.Size = new System.Drawing.Size(89, 13);
+            this.lbVendorInventory.Size = new System.Drawing.Size(95, 13);
             this.lbVendorInventory.TabIndex = 1;
-            this.lbVendorInventory.Text = "Venor\'s Inventory";
+            this.lbVendorInventory.Text = "Vendor\'s Inventory";
             // 
             // dgvMyItems
             // 
