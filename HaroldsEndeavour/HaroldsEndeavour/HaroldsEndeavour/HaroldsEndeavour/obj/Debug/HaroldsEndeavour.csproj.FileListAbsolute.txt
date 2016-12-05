@@ -54,3 +54,5 @@ C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavou
 C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\obj\Debug\SuperAdventure.Properties.Resources.resources
 C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\obj\Debug\HaroldsEndeavour.csproj.GenerateResource.Cache
 C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\obj\Debug\SuperAdventure.TradingScreen.resources
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\obj\Debug\SuperAdventure.MenuScreen.resources
+C:\Users\Notandi\git_verkefniA\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\HaroldsEndeavour\obj\Debug\SuperAdventure.MainMenuScreen.resources
