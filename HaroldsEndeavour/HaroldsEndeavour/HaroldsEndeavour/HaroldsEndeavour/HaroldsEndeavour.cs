@@ -31,6 +31,9 @@ namespace HaroldsEndeavour
             else
             {
                 _player = Player.CreateDefaultPlayer();
+                MainMenuScreen mainMenuScreen = new MainMenuScreen(_player);
+                mainMenuScreen.StartPosition = FormStartPosition.CenterParent;
+                mainMenuScreen.ShowDialog(this);
             }
 
             cboWeapons.DataSource = _player.Weapons;
@@ -445,16 +448,6 @@ namespace HaroldsEndeavour
             TradingScreen tradingScreen = new TradingScreen(_player);
             tradingScreen.StartPosition = FormStartPosition.CenterParent;
             tradingScreen.ShowDialog(this);
-
-            if (_player.CurrentLocation.VendorWorkingHere != null)
-            {
-                btnTrade.Visible = true;
-            }
-
-            else
-	        {
-                btnTrade.Visible = false;
-            }
         }
 
         private void rtbMessages_TextChanged(object sender, EventArgs e)
@@ -466,6 +459,19 @@ namespace HaroldsEndeavour
         private void HaroldsEndeavour_FormClosing(object sender, FormClosingEventArgs e)
         {
             File.WriteAllText(PLAYER_DATA_FILR_NAME, _player.ToXmlString());
+        }
+
+        private void HaroldsEndeavour_Load(object sender, EventArgs e)
+        {
+            if (_player.CurrentLocation.VendorWorkingHere == null)
+            {
+                btnTrade.Visible = false;
+            }
+
+            else
+            {
+                btnTrade.Visible = true;
+            }
         }
     }
     }
