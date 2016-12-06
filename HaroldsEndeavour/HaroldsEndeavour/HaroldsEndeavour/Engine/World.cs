@@ -109,7 +109,7 @@ namespace Engine
             Items.Add(new Item(ITEM_ID_PIECE_OF_FUR, "Piece of fur", "Pieces of fur", 1));
             Items.Add(new Item(ITEM_ID_SNAKE_FANG, "Snake fang", "Snake fangs", 1));
             Items.Add(new Item(ITEM_ID_SNAKESKIN, "Snakeskin", "Snakeskins", 2));
-            Items.Add(new Weapon(ITEM_ID_CLUB, "Club", "Clubs", 3, 10, 8));
+            Items.Add(new Weapon(ITEM_ID_CLUB, "Club", "Clubs", 1, 6, 8));
             Items.Add(new HealingPotion(ITEM_ID_HEALING_POTION, "Healing potion", "Healing potions", 5, 3));
             Items.Add(new HealingPotion(ITEM_ID_EXPERIMENTAL_POTION, "Experimental potion", "Experimental potion's", 10, 8));
             Items.Add(new Item(ITEM_ID_SPIDER_FANG, "Spider fang", "Spider fangs", 2));
@@ -132,35 +132,35 @@ namespace Engine
         //Creating the monsters
         private static void PopulateMonsters()
         {
-            Monster rat = new Monster(MONSTER_ID_RAT, "Rat", 5, 100, 10, 3, 3);
+            Monster rat = new Monster(MONSTER_ID_RAT, "Rat", 5, 5, 10, 5, 5);
             rat.LootTable.Add(new LootItem(ItemByID(ITEM_ID_RAT_TAIL), 75, false));
             rat.LootTable.Add(new LootItem(ItemByID(ITEM_ID_PIECE_OF_FUR), 75, true));
 
-            Monster snake = new Monster(MONSTER_ID_SNAKE, "Snake", 5, 3, 10, 3, 3);
+            Monster snake = new Monster(MONSTER_ID_SNAKE, "Snake", 5, 5, 10, 3, 3);
             snake.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SNAKE_FANG), 75, false));
             snake.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SNAKESKIN), 75, true));
 
-            Monster giantSpider = new Monster(MONSTER_ID_GIANT_SPIDER, "Giant spider", 20, 5, 40, 10, 10);
+            Monster giantSpider = new Monster(MONSTER_ID_GIANT_SPIDER, "Giant spider", 20, 15, 40, 10, 10);
             giantSpider.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SPIDER_FANG), 75, true));
             giantSpider.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SPIDER_SILK), 25, false));
 
-            Monster skellaton = new Monster(MONSTER_ID_SKELLATON, "Skellaton", 10, 4, 15, 5, 5);
+            Monster skellaton = new Monster(MONSTER_ID_SKELLATON, "Skellaton", 10, 7, 15, 5, 5);
             skellaton.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SKULL), 75, false));
             skellaton.LootTable.Add(new LootItem(ItemByID(ITEM_ID_BONES), 75, true));
 
-            Monster Goblin = new Monster(MONSTER_ID_GOBLIN, "Goblin", 8, 5, 15, 7, 7);
+            Monster Goblin = new Monster(MONSTER_ID_GOBLIN, "Goblin", 8, 7, 15, 10, 10);
             Goblin.LootTable.Add(new LootItem(ItemByID(ITEM_ID_GOBLIN_EYE), 30, false));
             Goblin.LootTable.Add(new LootItem(ItemByID(ITEM_ID_GOBLIN_SKIN), 75, true));
 
-            Monster Lich = new Monster(MONSTER_ID_LICH, "Lich", 15, 10, 15, 10, 10);
+            Monster Lich = new Monster(MONSTER_ID_LICH, "Lich", 15, 10, 15, 20, 20);
             Lich.LootTable.Add(new LootItem(ItemByID(ITEM_ID_LICH_DUST), 50, true));
             Lich.LootTable.Add(new LootItem(ItemByID(ITEM_ID_LICH_HEARTSONE), 15, false));
 
-            Monster LichKing = new Monster(MONSTER_ID_LICH_KING, "Lich King", 25, 100, 100, 20, 20);
+            Monster LichKing = new Monster(MONSTER_ID_LICH_KING, "Lich King", 25, 20, 100, 30, 30);
             LichKing.LootTable.Add(new LootItem(ItemByID(ITEM_ID_LICH_CROWN), 100, true));
             LichKing.LootTable.Add(new LootItem(ItemByID(ITEM_ID_LICH_DUST), 75, false));
-
-            Monster whereGoat = new Monster(MONSTER_ID_WHEREGOAT, "Wheregoat", 10, 5, 10, 10, 10);
+        
+            Monster whereGoat = new Monster(MONSTER_ID_WHEREGOAT, "Wheregoat", 10, 9, 10, 17, 17);
             whereGoat.LootTable.Add(new LootItem(ItemByID(ITEM_ID_WHEREGOAT_FUR), 75, true));
             whereGoat.LootTable.Add(new LootItem(ItemByID(ITEM_ID_WHEREGOAT_HORN), 25, false));
 
@@ -194,11 +194,11 @@ namespace Engine
                 new Quest(
                     QUEST_ID_CLEAR_FARMERS_FIELD,
                     "Clear the farmer's field",
-                    "Kill snakes in the farmer's field and bring back 3 snake fangs. You will receive an adventurer's pass and 20 gold pieces.", 20, 20);
+                    "Kill snakes in the farmer's field and bring back 3 snake fangs. You will receive a clup and 20 gold pieces.", 20, 20);
 
             clearFarmersField.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_SNAKE_FANG), 3));
 
-            clearFarmersField.RewardItem = ItemByID(ITEM_ID_ADVENTURER_PASS);
+            clearFarmersField.RewardItem = ItemByID(ITEM_ID_CLUB);
 
             //Clear the mystic temple
             Quest clearMysticTemple =
@@ -238,9 +238,9 @@ namespace Engine
                 new Quest(
                     QUEST_ID_CLEAR_SKELLATON_TOMS_FARM,
                     "Clear skellaton Tom's farm",
-                    "Aah so you need the key to the old tomb do ya,the hell eith it I'll give it to ya if you kill thoes damned wheregoats on my farm, bring back 5 wheregoat horns", 10, 15);
+                    "Aah so you need the key to the old tomb do ya,the hell eith it I'll give it to ya if you kill thoes damned wheregoats on my farm, bring back 3 wheregoat horns", 10, 15);
 
-            clearSkellatonTomsFram.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_WHEREGOAT_HORN), 5));
+            clearSkellatonTomsFram.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_WHEREGOAT_HORN), 3));
 
             clearSkellatonTomsFram.RewardItem = ItemByID(ITEM_ID_RUSTY_GATE_KEY);
 
@@ -282,7 +282,7 @@ namespace Engine
             // Create each location
             Location home = new Location(LOCATION_ID_HOME, "Home", "No place like home.");
 
-            Location townSquare = new Location(LOCATION_ID_TOWN_SQUARE, "Town square", "You see a fountain and a rusty sword in the gudder.");
+            Location townSquare = new Location(LOCATION_ID_TOWN_SQUARE, "Town square", "You see a fountain.");
 
             Vendor bobTheRatCatcher = new Vendor("Bob the Rat-Catcher");
             bobTheRatCatcher.AddItemToInventory(ItemByID(ITEM_ID_PIECE_OF_FUR), 5);
@@ -339,15 +339,15 @@ namespace Engine
             Location ancientTombYard = new Location(LOCATION_ID_ANCIENT_TOMB_YARD, "Ancient tomb yard", "You see the entrance to an old tomb");
             ancientTombYard.QuestAvailableHere = QuestByID(QUEST_ID_FETCH_LITCH_HEARTSTONES);
 
-            Location ancientTombHallway = new Location(LOCATION_ID_ANCIENT_TOMB_HALLWAY, "Ancient tomb hallway", "There are magic cantles lighting up the place");
-            ancientTombHallway.ItemRequiredToEnter = ItemByID(ITEM_ID_RUSTY_GATE_KEY);
+            Location ancientTombHallway = new Location(LOCATION_ID_ANCIENT_TOMB_HALLWAY, "Ancient tomb hallway", "There are magic cantles lighting up the place", ItemByID(ITEM_ID_RUSTY_GATE_KEY));
+            //ancientTombHallway.ItemRequiredToEnter = ItemByID(ITEM_ID_RUSTY_GATE_KEY);
             ancientTombHallway.MonsterLivingHere = MonsterByID(MONSTER_ID_LICH);
 
             Location ancientTombThroneroomDoor = new Location(LOCATION_ID_ANCIENT_TOMB_THRONEROOM_DOOR, "Throneroom door", "A huge door with ancient language carved in it");
             ancientTombThroneroomDoor.QuestAvailableHere = QuestByID(QUEST_ID_KILL_LICH_KING);
 
-            Location ancientTombThroneroom = new Location(LOCATION_ID_ANCIENT_TOMB_THRONEROOM, "Throneroom", "A huge room filled with ancient knowledge stored in books an tomes");
-            ancientTombThroneroom.ItemRequiredToEnter = ItemByID(ITEM_ID_THRONEROOM_KEY);
+            Location ancientTombThroneroom = new Location(LOCATION_ID_ANCIENT_TOMB_THRONEROOM, "Throneroom", "A huge room filled with ancient knowledge stored in books an tomes", ItemByID(ITEM_ID_THRONEROOM_KEY));
+            //ancientTombThroneroom.ItemRequiredToEnter = ItemByID(ITEM_ID_THRONEROOM_KEY);
             ancientTombThroneroom.MonsterLivingHere = MonsterByID(MONSTER_ID_LICH_KING);
 
             // Link the locations together

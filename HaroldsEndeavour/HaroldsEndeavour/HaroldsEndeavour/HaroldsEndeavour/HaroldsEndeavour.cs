@@ -27,10 +27,12 @@ namespace HaroldsEndeavour
             if (File.Exists(PLAYER_DATA_FILR_NAME))
             {
                 _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILR_NAME));
+              //_player = Player.CreateDefaultPlayer();
             }
             else
             {
-                _player = Player.CreateDefaultPlayer();
+               _player = Player.CreateDefaultPlayer();
+                //_player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILR_NAME));
             }
 
             cboWeapons.DataSource = _player.Weapons;
@@ -445,16 +447,6 @@ namespace HaroldsEndeavour
             TradingScreen tradingScreen = new TradingScreen(_player);
             tradingScreen.StartPosition = FormStartPosition.CenterParent;
             tradingScreen.ShowDialog(this);
-
-            if (_player.CurrentLocation.VendorWorkingHere != null)
-            {
-                btnTrade.Visible = true;
-            }
-
-            else
-	        {
-                btnTrade.Visible = false;
-            }
         }
 
         private void rtbMessages_TextChanged(object sender, EventArgs e)

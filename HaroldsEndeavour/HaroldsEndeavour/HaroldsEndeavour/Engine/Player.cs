@@ -185,12 +185,12 @@ namespace Engine
             {
                 if (ii.Details.ID == location.ItemRequiredToEnter.ID)
                 {
-                    // We found the required item, so return "true"
+                    //found the required item, so return "true"
                     return true;
                 }
             }
 
-            // We didn't find the required item in their inventory, so return "false"
+            //didn't find the required item in their inventory, so return "false"
             return false;
         }
 
@@ -248,7 +248,7 @@ namespace Engine
                 }
             }
 
-            // If we got here, then the player must have all the required items, and enough of them, to complete the quest.
+            // If player gets here, then the player must have all the required items, and enough of them, to complete the quest.
             return true;
         }
 
