@@ -132,7 +132,7 @@ namespace Engine
         //Creating the monsters
         private static void PopulateMonsters()
         {
-            Monster rat = new Monster(MONSTER_ID_RAT, "Rat", 5, 3, 10, 3, 3);
+            Monster rat = new Monster(MONSTER_ID_RAT, "Rat", 5, 100, 10, 3, 3);
             rat.LootTable.Add(new LootItem(ItemByID(ITEM_ID_RAT_TAIL), 75, false));
             rat.LootTable.Add(new LootItem(ItemByID(ITEM_ID_PIECE_OF_FUR), 75, true));
 
@@ -249,7 +249,7 @@ namespace Engine
                 new Quest(
                     QUEST_ID_FETCH_LITCH_HEARTSTONES,
                     "Fetch 3 lich heartstones",
-                    "Aagh I can't get this damn door open, hey you there you'r here for that heirloom right?, I'll give it back if you kill the lich king and bring me his crown but to do so I need 3 lich heartstones to create a throneroom key that fits the door", 20, 0);
+                    "hey you there, you'r here for that heirloom right?, I'll give it back if you kill the lich king and bring me his crown but to do so I need 3 lich heartstones to create the throneroom key", 20, 0);
 
             fetchLichHeratsones.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_LICH_HEARTSONE), 3));
 
@@ -259,7 +259,7 @@ namespace Engine
             Quest killLichKing =
                 new Quest(
                     QUEST_ID_KILL_LICH_KING,
-                    "Kill the lich king, take it's crown and give it to the old man",
+                    "Kill the lich king, take it's crown",
                     "I need to get into the throneroom and kill the lich king and then return it's crown to the old man", 0, 0);
 
             killLichKing.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_LICH_CROWN), 1));
@@ -334,18 +334,21 @@ namespace Engine
             skellatonTomsFarmhouse.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_SKELLATON_TOMS_FARM);
 
             Location skellatonTomsFarm = new Location(LOCATION_ID_SKELLATON_TOMS_FARM, "Skellaton Tom's farm", "Wheregoats everywhere eating por Tom's crops");
+            skellatonTomsFarm.MonsterLivingHere = MonsterByID(MONSTER_ID_WHEREGOAT);
 
             Location ancientTombYard = new Location(LOCATION_ID_ANCIENT_TOMB_YARD, "Ancient tomb yard", "You see the entrance to an old tomb");
+            ancientTombYard.QuestAvailableHere = QuestByID(QUEST_ID_FETCH_LITCH_HEARTSTONES);
 
             Location ancientTombHallway = new Location(LOCATION_ID_ANCIENT_TOMB_HALLWAY, "Ancient tomb hallway", "There are magic cantles lighting up the place");
             ancientTombHallway.ItemRequiredToEnter = ItemByID(ITEM_ID_RUSTY_GATE_KEY);
+            ancientTombHallway.MonsterLivingHere = MonsterByID(MONSTER_ID_LICH);
 
             Location ancientTombThroneroomDoor = new Location(LOCATION_ID_ANCIENT_TOMB_THRONEROOM_DOOR, "Throneroom door", "A huge door with ancient language carved in it");
-            ancientTombThroneroomDoor.QuestAvailableHere = QuestByID(QUEST_ID_FETCH_LITCH_HEARTSTONES);
             ancientTombThroneroomDoor.QuestAvailableHere = QuestByID(QUEST_ID_KILL_LICH_KING);
-            ancientTombThroneroomDoor.ItemRequiredToEnter = ItemByID(ITEM_ID_THRONEROOM_KEY);
 
             Location ancientTombThroneroom = new Location(LOCATION_ID_ANCIENT_TOMB_THRONEROOM, "Throneroom", "A huge room filled with ancient knowledge stored in books an tomes");
+            ancientTombThroneroom.ItemRequiredToEnter = ItemByID(ITEM_ID_THRONEROOM_KEY);
+            ancientTombThroneroom.MonsterLivingHere = MonsterByID(MONSTER_ID_LICH_KING);
 
             // Link the locations together
             home.LocationToNorth = townSquare;
