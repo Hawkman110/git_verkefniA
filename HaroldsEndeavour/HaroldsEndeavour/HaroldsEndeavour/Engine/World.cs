@@ -31,6 +31,15 @@ namespace Engine
         public const int ITEM_ID_BONES = 14;
         public const int ITEM_ID_GOBLIN_EYE = 15;
         public const int ITEM_ID_GOBLIN_SKIN = 16;
+        public const int ITEM_ID_LICH_DUST = 17;
+        public const int ITEM_ID_LICH_HEARTSONE = 18;
+        public const int ITEM_ID_THRONEROOM_KEY = 19;
+        public const int ITEM_ID_RUSTY_GATE_KEY = 20;
+        public const int ITEM_ID_FAMILY_HEIRLOOM = 21;
+        public const int ITEM_ID_LICH_CROWN = 22;
+        public const int ITEM_ID_FLAMING_SWORD = 23;
+        public const int ITEM_ID_WHEREGOAT_FUR = 24;
+        public const int ITEM_ID_WHEREGOAT_HORN = 25;
 
         //Monster ID's
         public const int MONSTER_ID_RAT = 1;
@@ -38,12 +47,19 @@ namespace Engine
         public const int MONSTER_ID_GIANT_SPIDER = 3;
         public const int MONSTER_ID_SKELLATON = 4;
         public const int MONSTER_ID_GOBLIN = 5;
+        public const int MONSTER_ID_WHEREGOAT = 6;
+        public const int MONSTER_ID_LICH = 7;
+        public const int MONSTER_ID_LICH_KING = 8;
 
         //Quest ID's
         public const int QUEST_ID_CLEAR_ALCHEMIST_GARDEN = 1;
         public const int QUEST_ID_CLEAR_FARMERS_FIELD = 2;
         public const int QUEST_ID_CLEAR_MYSTIC_TEMPLE = 3;
         public const int QUEST_ID_CLEAR_DARK_CAVE = 4;
+        public const int QUEST_ID_CLEAR_SKELLATON_TOMS_FARM = 5;
+        public const int QUEST_ID_FETCH_FAMILY_HEIRLOOM = 6;
+        public const int QUEST_ID_FETCH_LITCH_HEARTSTONES = 7;
+        public const int QUEST_ID_KILL_LICH_KING = 8;
 
         //Location ID's
         public const int LOCATION_ID_HOME = 1;
@@ -62,6 +78,15 @@ namespace Engine
         public const int LOCATION_ID_SWAMP = 14;
         public const int LOCATION_ID_DARK_CAVE = 15;
         public const int LOCATION_ID_DARK_NARROW_ROAD = 16;
+        public const int LOCATION_ID_OLD_CABIN = 17;
+        public const int LOCATION_ID_ANCIENT_TOMB_YARD = 18;
+        public const int LOCATION_ID_ANCIENT_TOMB_HALLWAY = 19;
+        public const int LOCATION_ID_ANCIENT_TOMB_THRONEROOM_DOOR = 20;
+        public const int LOCATION_ID_ANCIENT_TOMB_THRONEROOM = 21;
+        public const int LOCATION_ID_SKELLATON_TOMS_FARMHOUSE = 22;
+        public const int LOCATION_ID_SKELLATON_TOMS_FARM = 23;
+
+
 
         //Other
         public const int UNSELLABLE_ITEM_PRICE = -1;
@@ -78,7 +103,8 @@ namespace Engine
         private static void PopulateItems()
         {
             Items.Add(new Weapon(ITEM_ID_RUSTY_SWORD, "Rusty sword", "Rusty swords", 0, 5, 5));
-            Items.Add(new Weapon(ITEM_ID_IRON_SWORD, "Iron sword", "Iron swords", 0, 10, 10));
+            Items.Add(new Weapon(ITEM_ID_IRON_SWORD, "Iron sword", "Iron swords", 0, 7, 10));
+            Items.Add(new Weapon(ITEM_ID_FLAMING_SWORD, "Flaming sword", "Flaming swords", 1, 12, 20));
             Items.Add(new Item(ITEM_ID_RAT_TAIL, "Rat tail", "Rat tails", 1));
             Items.Add(new Item(ITEM_ID_PIECE_OF_FUR, "Piece of fur", "Pieces of fur", 1));
             Items.Add(new Item(ITEM_ID_SNAKE_FANG, "Snake fang", "Snake fangs", 1));
@@ -89,10 +115,18 @@ namespace Engine
             Items.Add(new Item(ITEM_ID_SPIDER_FANG, "Spider fang", "Spider fangs", 2));
             Items.Add(new Item(ITEM_ID_SPIDER_SILK, "Spider silk", "Spider silks", 5));
             Items.Add(new Item(ITEM_ID_ADVENTURER_PASS, "Adventurer pass", "Adventurer passes", UNSELLABLE_ITEM_PRICE));
+            Items.Add(new Item(ITEM_ID_RUSTY_GATE_KEY, "Rusty gate key", "Rusty gate keys", UNSELLABLE_ITEM_PRICE));
+            Items.Add(new Item(ITEM_ID_THRONEROOM_KEY, "Throneroom key", "Throneroom keys", UNSELLABLE_ITEM_PRICE));
             Items.Add(new Item(ITEM_ID_SKULL, "Skull", "Skulls", 5));
             Items.Add(new Item(ITEM_ID_BONES, "Bone", "Bones", 1));
             Items.Add(new Item(ITEM_ID_GOBLIN_EYE, "Goblin eye", "Goblin eyes", 5));
             Items.Add(new Item(ITEM_ID_GOBLIN_SKIN, "Goblin Skin", "Goblin Skin's", 1));
+            Items.Add(new Item(ITEM_ID_LICH_DUST, "Lich dust", "lich dusts", 3));
+            Items.Add(new Item(ITEM_ID_LICH_HEARTSONE, "Lich heartsone", "Lich Heartsones", 10));
+            Items.Add(new Item(ITEM_ID_FAMILY_HEIRLOOM, "Family heirloom", "Family heirlooms", UNSELLABLE_ITEM_PRICE));
+            Items.Add(new Item(ITEM_ID_LICH_CROWN, "Lich crown", "Lich crowns", UNSELLABLE_ITEM_PRICE));
+            Items.Add(new Item(ITEM_ID_WHEREGOAT_FUR, "Wheregoat fur", "Wheregoat furs", 3));
+            Items.Add(new Item(ITEM_ID_WHEREGOAT_HORN, "Wheregoat horn", "Wheregoat horns", 10));
         }
 
         //Creating the monsters
@@ -110,19 +144,35 @@ namespace Engine
             giantSpider.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SPIDER_FANG), 75, true));
             giantSpider.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SPIDER_SILK), 25, false));
 
-            Monster skellaton = new Monster(MONSTER_ID_SKELLATON, "Skellaton", 10, 4, 15, 4, 4);
+            Monster skellaton = new Monster(MONSTER_ID_SKELLATON, "Skellaton", 10, 4, 15, 5, 5);
             skellaton.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SKULL), 75, false));
             skellaton.LootTable.Add(new LootItem(ItemByID(ITEM_ID_BONES), 75, true));
 
-            Monster Goblin = new Monster(MONSTER_ID_GOBLIN, "Goblin", 8, 5, 15, 4, 4);
+            Monster Goblin = new Monster(MONSTER_ID_GOBLIN, "Goblin", 8, 5, 15, 7, 7);
             Goblin.LootTable.Add(new LootItem(ItemByID(ITEM_ID_GOBLIN_EYE), 30, false));
             Goblin.LootTable.Add(new LootItem(ItemByID(ITEM_ID_GOBLIN_SKIN), 75, true));
+
+            Monster Lich = new Monster(MONSTER_ID_LICH, "Lich", 15, 10, 15, 10, 10);
+            Lich.LootTable.Add(new LootItem(ItemByID(ITEM_ID_LICH_DUST), 50, true));
+            Lich.LootTable.Add(new LootItem(ItemByID(ITEM_ID_LICH_HEARTSONE), 15, false));
+
+            Monster LichKing = new Monster(MONSTER_ID_LICH_KING, "Lich King", 25, 100, 100, 20, 20);
+            LichKing.LootTable.Add(new LootItem(ItemByID(ITEM_ID_LICH_CROWN), 100, true));
+            LichKing.LootTable.Add(new LootItem(ItemByID(ITEM_ID_LICH_DUST), 75, false));
+
+            Monster whereGoat = new Monster(MONSTER_ID_WHEREGOAT, "Wheregoat", 10, 5, 10, 10, 10);
+            whereGoat.LootTable.Add(new LootItem(ItemByID(ITEM_ID_WHEREGOAT_FUR), 75, true));
+            whereGoat.LootTable.Add(new LootItem(ItemByID(ITEM_ID_WHEREGOAT_HORN), 25, false));
+
 
             Monsters.Add(rat);
             Monsters.Add(snake);
             Monsters.Add(giantSpider);
             Monsters.Add(skellaton);
             Monsters.Add(Goblin);
+            Monsters.Add(whereGoat);
+            Monsters.Add(Lich);
+            Monsters.Add(LichKing);
         }
 
         //Creating the quests
@@ -172,11 +222,59 @@ namespace Engine
 
             clearDarkCave.RewardItem = ItemByID(ITEM_ID_EXPERIMENTAL_POTION);
 
+            //Fetch family heirloom
+            Quest fetchFamilyHeirloom =
+                new Quest(
+                    QUEST_ID_FETCH_FAMILY_HEIRLOOM,
+                    "Fetch Rundvig's family heirloom",
+                    "Please wiery traveler I need your help, a strange old man stole my family heirloom it's all I have to remember my mom by, I think Skellaton Tom has the key to the tomb, I'll pay you good I swear", 100, 100);
+
+            fetchFamilyHeirloom.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_FAMILY_HEIRLOOM), 1));
+
+            fetchFamilyHeirloom.RewardItem = ItemByID(ITEM_ID_FLAMING_SWORD);
+
+            //Clear Skellaton Tom's farm
+            Quest clearSkellatonTomsFram =
+                new Quest(
+                    QUEST_ID_CLEAR_SKELLATON_TOMS_FARM,
+                    "Clear skellaton Tom's farm",
+                    "Aah so you need the key to the old tomb do ya,the hell eith it I'll give it to ya if you kill thoes damned wheregoats on my farm, bring back 5 wheregoat horns", 10, 15);
+
+            clearSkellatonTomsFram.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_WHEREGOAT_HORN), 5));
+
+            clearSkellatonTomsFram.RewardItem = ItemByID(ITEM_ID_RUSTY_GATE_KEY);
+
+            //Fetch lich heartstones
+            Quest fetchLichHeratsones =
+                new Quest(
+                    QUEST_ID_FETCH_LITCH_HEARTSTONES,
+                    "Fetch 3 lich heartstones",
+                    "Aagh I can't get this damn door open, hey you there you'r here for that heirloom right?, I'll give it back if you kill the lich king and bring me his crown but to do so I need 3 lich heartstones to create a throneroom key that fits the door", 20, 0);
+
+            fetchLichHeratsones.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_LICH_HEARTSONE), 3));
+
+            fetchLichHeratsones.RewardItem = ItemByID(ITEM_ID_THRONEROOM_KEY);
+
+            //Kill the lich king
+            Quest killLichKing =
+                new Quest(
+                    QUEST_ID_KILL_LICH_KING,
+                    "Kill the lich king, take it's crown and give it to the old man",
+                    "I need to get into the throneroom and kill the lich king and then return it's crown to the old man", 0, 0);
+
+            killLichKing.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ITEM_ID_LICH_CROWN), 1));
+
+            killLichKing.RewardItem = ItemByID(ITEM_ID_FAMILY_HEIRLOOM);
+
 
             Quests.Add(clearAlchemistGarden);
             Quests.Add(clearFarmersField);
             Quests.Add(clearMysticTemple);
             Quests.Add(clearDarkCave);
+            Quests.Add(clearSkellatonTomsFram);
+            Quests.Add(fetchFamilyHeirloom);
+            Quests.Add(fetchLichHeratsones);
+            Quests.Add(killLichKing);
         }
 
         private static void PopulateLocations()
@@ -229,6 +327,26 @@ namespace Engine
 
             Location darkNarrowRoad = new Location(LOCATION_ID_DARK_NARROW_ROAD, "Dark Narrow Road", "A dark narrow road heading north covered in dead trees");
 
+            Location oldCabin = new Location(LOCATION_ID_OLD_CABIN, "Old Cabin", "An old rundown cabin");
+            oldCabin.QuestAvailableHere = QuestByID(QUEST_ID_FETCH_FAMILY_HEIRLOOM);
+
+            Location skellatonTomsFarmhouse = new Location(LOCATION_ID_SKELLATON_TOMS_FARMHOUSE, "Skellaton Tom's Farmhouse", "A skellaton retired from the skellaton business growing crops");
+            skellatonTomsFarmhouse.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_SKELLATON_TOMS_FARM);
+
+            Location skellatonTomsFarm = new Location(LOCATION_ID_SKELLATON_TOMS_FARM, "Skellaton Tom's farm", "Wheregoats everywhere eating por Tom's crops");
+
+            Location ancientTombYard = new Location(LOCATION_ID_ANCIENT_TOMB_YARD, "Ancient tomb yard", "You see the entrance to an old tomb");
+
+            Location ancientTombHallway = new Location(LOCATION_ID_ANCIENT_TOMB_HALLWAY, "Ancient tomb hallway", "There are magic cantles lighting up the place");
+            ancientTombHallway.ItemRequiredToEnter = ItemByID(ITEM_ID_RUSTY_GATE_KEY);
+
+            Location ancientTombThroneroomDoor = new Location(LOCATION_ID_ANCIENT_TOMB_THRONEROOM_DOOR, "Throneroom door", "A huge door with ancient language carved in it");
+            ancientTombThroneroomDoor.QuestAvailableHere = QuestByID(QUEST_ID_FETCH_LITCH_HEARTSTONES);
+            ancientTombThroneroomDoor.QuestAvailableHere = QuestByID(QUEST_ID_KILL_LICH_KING);
+            ancientTombThroneroomDoor.ItemRequiredToEnter = ItemByID(ITEM_ID_THRONEROOM_KEY);
+
+            Location ancientTombThroneroom = new Location(LOCATION_ID_ANCIENT_TOMB_THRONEROOM, "Throneroom", "A huge room filled with ancient knowledge stored in books an tomes");
+
             // Link the locations together
             home.LocationToNorth = townSquare;
 
@@ -254,6 +372,27 @@ namespace Engine
             deadForest.LocationToNorth = darkNarrowRoad;
 
             darkNarrowRoad.LocationToSouth = deadForest;
+            darkNarrowRoad.LocationToEast = oldCabin;
+            darkNarrowRoad.LocationToNorth = ancientTombYard;
+
+            oldCabin.LocationToWest = darkNarrowRoad;
+            oldCabin.LocationToSouth = skellatonTomsFarmhouse;
+
+            skellatonTomsFarmhouse.LocationToNorth = oldCabin;
+            skellatonTomsFarmhouse.LocationToEast = skellatonTomsFarm;
+
+            skellatonTomsFarm.LocationToWest = skellatonTomsFarmhouse;
+
+            ancientTombYard.LocationToSouth = darkNarrowRoad;
+            ancientTombYard.LocationToNorth = ancientTombHallway;
+
+            ancientTombHallway.LocationToSouth = ancientTombYard;
+            ancientTombHallway.LocationToEast = ancientTombThroneroomDoor;
+
+            ancientTombThroneroomDoor.LocationToWest = ancientTombHallway;
+            ancientTombThroneroomDoor.LocationToNorth = ancientTombThroneroom;
+
+            ancientTombThroneroom.LocationToSouth = ancientTombThroneroomDoor;
 
             brokenBridge.LocationToEast = deadForest;
             brokenBridge.LocationToWest = mysticTempleYard;
